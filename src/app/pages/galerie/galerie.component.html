@@ -1,0 +1,93 @@
+<!-- src/app/pages/galerie/galerie.component.html -->
+
+<!-- Section Hero -->
+<section class="hero-galerie">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <mat-icon>photo_library</mat-icon>
+      <span>Nos Moments</span>
+    </div>
+    <h1>Galerie Photos</h1>
+    <p class="hero-description">
+      Revivez les moments forts des éditions précédentes du Tax & Legal Days.<br />
+      Conférences, networking, formations et échanges enrichissants.
+    </p>
+  </div>
+</section>
+
+<!-- Section Galerie -->
+<section class="gallery-section">
+  <div class="gallery-container">
+    <div class="section-head">
+      <h2>Nos Souvenirs</h2>
+      <p>Découvrez les moments marquants des précédentes éditions de notre événement.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <article
+        #revealItem
+        class="gallery-item reveal"
+        *ngFor="let item of items; let i = index; trackBy: trackById"
+        (click)="openAt(i)"
+        (keydown.enter)="openAt(i)"
+        (keydown.space)="openAt(i)"
+        tabindex="0"
+        role="button"
+        [attr.aria-label]="'Ouvrir: ' + item.title"
+      >
+        <div class="gallery-image">
+          <img [src]="item.src" [alt]="item.alt" loading="lazy" />
+        </div>
+
+        <div class="gallery-info">
+          <div class="gallery-item-title">{{ item.title }}</div>
+          <div class="gallery-item-location">
+            <mat-icon class="location-icon">location_on</mat-icon>
+            <span>{{ item.location }}</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="gallery-cta">
+      <button class="btn-accent" type="button">
+        <mat-icon>add_photo_alternate</mat-icon>
+        Voir plus de souvenirs
+      </button>
+    </div>
+  </div>
+
+  <!-- POPUP / LIGHTBOX -->
+  <div class="gallery-popup" *ngIf="isOpen()" role="dialog" aria-modal="true">
+    <div class="popup-overlay" (click)="close()"></div>
+
+    <div class="popup-content" (click)="$event.stopPropagation()">
+      <button class="close-btn" type="button" (click)="close()" aria-label="Fermer">
+        <mat-icon>close</mat-icon>
+      </button>
+
+      <img
+        *ngIf="selected() as s"
+        [src]="s.src"
+        [alt]="s.alt"
+      />
+
+      <h3 *ngIf="selected() as s">{{ s.title }}</h3>
+      <p *ngIf="selected() as s">
+        <mat-icon class="location-icon">location_on</mat-icon>
+        {{ s.location }}
+      </p>
+
+      <div class="popup-actions">
+        <button class="nav-btn" type="button" (click)="prev()" aria-label="Précédent">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+
+        <button class="nav-btn" type="button" (click)="next()" aria-label="Suivant">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

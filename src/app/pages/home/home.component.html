@@ -1,0 +1,214 @@
+<!-- src/app/pages/home-page/home-page.component.html -->
+<section class="hero relative overflow-hidden">
+  <div class="hero-background"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-grid">
+    <div class="hero-left space-y-4">
+      <div class="pill inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full backdrop-blur-md">
+        <span class="pill-dot w-2.5 h-2.5 rounded-full"></span>
+        <span class="text-sm font-semibold tracking-wide">UCAC • Campus d'Ekounou • 4e édition</span>
+      </div>
+
+      <h1 class="font-title text-4xl md:text-5xl font-extrabold leading-tight">Tax & Legal Days 2026</h1>
+
+      <p class="hero-subtitle text-lg leading-relaxed opacity-95">
+        Thème : <strong class="font-bold">{{ theme }}</strong><br />
+        Dates : <strong class="font-bold">{{ dates }}</strong>
+      </p>
+
+      <div class="hero-cta flex flex-wrap gap-3 pt-2">
+        <a class="btn-accent inline-flex items-center gap-2 px-5 py-3 rounded-lg font-bold transition-all duration-200 hover:scale-105 hover:shadow-lg" routerLink="/sponsoring">Devenir Sponsor</a>
+        <a class="btn-primary inline-flex items-center gap-2 px-5 py-3 rounded-lg font-semibold transition-all duration-200 hover:scale-105 hover:shadow-lg" routerLink="/programme">Voir le programme</a>
+      </div>
+
+      <div class="hero-meta flex flex-wrap gap-4 pt-2">
+        <div class="meta-item inline-flex items-center gap-2 text-sm">
+          <mat-icon class="text-lg">event</mat-icon>
+          <span>02–05 Mars 2026</span>
+        </div>
+        <div class="meta-item inline-flex items-center gap-2 text-sm">
+          <mat-icon class="text-lg">location_on</mat-icon>
+          <span>UCAC — Ekounou, Yaoundé</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right flex items-center justify-center">
+      <!-- Logo Tax & Legal Days -->
+      <div class="hero-logo" data-aos="fade-right" data-aos-delay="100">
+        <div class="logo-container relative">
+          <div class="logo-circle-background"></div>
+          <img src="assets/images/TaxLogo.jpeg" alt="Logo Tax & Legal Days" class="aras-logo animated-logo rounded-full shadow-lg">
+          <div class="logo-glow"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section scroll-reveal py-16 md:py-20" #aboutSection>
+  <div class="container max-w-6xl mx-auto px-4">
+    <div class="section-head text-center mb-12">
+      <h2 class="font-title text-3xl md:text-4xl font-bold mb-4">À propos</h2>
+      <p class="text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        Les <strong class="font-semibold text-gray-900">TAX & LEGAL DAYS</strong> sont un évènement académique porté par les étudiants de Master 2
+        en Droit des Affaires de l'UCAC. Il vise à vulgariser les thématiques juridiques et fiscales d'actualité,
+        et à créer un pont concret entre la formation et le monde professionnel.
+      </p>
+    </div>
+
+    <div class="about-grid grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="card scroll-reveal-item bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100" #cardItem>
+        <h3 class="font-title text-xl font-bold mb-3 text-gray-900">Objectif</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Valoriser le droit des affaires (OHADA) et la fiscalité, promouvoir les métiers, et renforcer les
+          compétences intellectuelles, morales et professionnelles des étudiants.
+        </p>
+      </div>
+
+      <div class="card scroll-reveal-item bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100" #cardItem>
+        <h3 class="font-title text-xl font-bold mb-3 text-gray-900">Origine</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Initiée par les Masters DAFI et CAA, la manifestation est à sa <strong class="font-semibold">4e édition</strong> et répond
+          au besoin d'immersion pratique et d'insertion.
+        </p>
+      </div>
+
+      <div class="card scroll-reveal-item bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100" #cardItem>
+        <h3 class="font-title text-xl font-bold mb-3 text-gray-900">Portée</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Une dynamique UCAC avec rayonnement national et ambition d'impact sur la modernisation du droit des
+          affaires et les réformes fiscales (Cameroun & espace CEMAC).
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft scroll-reveal py-16 md:py-20 bg-gray-50" #benefitsSection>
+  <div class="container max-w-6xl mx-auto px-4">
+    <div class="section-head text-center mb-12">
+      <h2 class="font-title text-3xl md:text-4xl font-bold mb-4">Pourquoi venir ?</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">Trois bonnes raisons, très concrètes, d'être là du 03 au 05 mars 2026.</p>
+    </div>
+
+    <div class="cards-3 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="card scroll-reveal-item bg-white rounded-xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 border border-gray-100" *ngFor="let b of benefits; let i = index" #cardItem>
+        <div class="icon w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center mb-4">
+          <mat-icon class="text-blue-700">{{ b.icon }}</mat-icon>
+        </div>
+        <h3 class="font-title text-lg font-bold mb-2 text-gray-900">{{ b.title }}</h3>
+        <p class="text-gray-600 leading-relaxed text-sm">{{ b.desc }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section scroll-reveal py-16 md:py-20" #highlightsSection>
+  <div class="container max-w-6xl mx-auto px-4">
+    <div class="section-head text-center mb-12">
+      <h2 class="font-title text-3xl md:text-4xl font-bold mb-4">Highlights du programme</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">Un aperçu rapide des trois journées (détails complets dans la page Programme).</p>
+    </div>
+
+    <div class="cards-3 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="card scroll-reveal-item bg-white rounded-xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col border border-gray-100" *ngFor="let h of highlights; let i = index" #cardItem>
+        <div class="kicker flex items-center justify-between gap-3 mb-4">
+          <span class="badge inline-flex px-3 py-1.5 rounded-full bg-amber-50 text-gray-900 text-xs font-bold border border-amber-200">{{ h.day }}</span>
+          <span class="date text-gray-500 text-sm font-semibold">{{ h.date }}</span>
+        </div>
+        <h3 class="font-title text-lg font-bold mb-3 text-gray-900">{{ h.title }}</h3>
+        <ul class="bullet list-disc pl-5 text-gray-600 text-sm space-y-2 flex-grow">
+          <li *ngFor="let item of h.items">{{ item }}</li>
+        </ul>
+        <a class="link inline-block mt-4 text-blue-700 font-bold text-sm hover:underline" routerLink="/programme">Voir détails →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft scroll-reveal py-16 md:py-20 bg-gray-50" #partnersSection>
+  <div class="container max-w-6xl mx-auto px-4">
+    <div class="section-head text-center mb-12">
+      <h2 class="font-title text-3xl md:text-4xl font-bold mb-4">Sponsors & partenaires</h2>
+      <p class="text-gray-600">Ils nous font confiance (liste évolutive).</p>
+    </div>
+
+    <div class="logo-strip card bg-white rounded-xl p-6 shadow-sm grid grid-cols-2 md:grid-cols-4 gap-4 border border-gray-100">
+      <div class="logo flex items-center justify-center p-4 rounded-lg border border-dashed border-gray-200 min-h-[80px] hover:border-blue-400 transition-colors duration-200" *ngFor="let p of partners">
+        <img *ngIf="p.logo" [src]="p.logo" [alt]="p.name" class="partner-logo max-h-14 object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+        <span *ngIf="!p.logo" class="text-gray-600 font-bold text-sm text-center">{{ p.name }}</span>
+      </div>
+      <div class="logo placeholder flex items-center justify-center p-4 rounded-lg border border-solid border-amber-300 bg-amber-50 min-h-[80px]">
+        <span class="text-gray-700 font-bold text-sm">Votre logo ici</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section scroll-reveal py-16 md:py-20" #ctaSection>
+  <div class="container max-w-6xl mx-auto px-4">
+    <div class="cta-banner rounded-2xl bg-gradient-to-br from-blue-50 to-amber-50 border border-gray-200 p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div class="cta-left max-w-2xl">
+        <h2 class="font-title text-2xl md:text-3xl font-bold mb-3 text-gray-900">Votre logo ici, au cœur de la communauté UCAC</h2>
+        <p class="text-gray-600 leading-relaxed">
+          Sponsoring <strong class="font-semibold">Silver / Gold / Diamond</strong> : visibilité campus (Nkolbisson, Ekounou), réseaux sociaux,
+          supports imprimés, et espace à la foire des métiers selon package.
+        </p>
+      </div>
+      <div class="cta-right flex flex-wrap gap-3">
+        <a class="btn-accent inline-flex items-center gap-2 px-5 py-3 rounded-lg font-bold transition-all duration-200 hover:scale-105" routerLink="/sponsoring">Découvrir les packages</a>
+        <a class="btn-outline inline-flex items-center gap-2 px-5 py-3 rounded-lg font-semibold border border-gray-200 bg-white hover:bg-blue-50 transition-all duration-200" routerLink="/contact">Demander le dossier</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section scroll-reveal py-16 md:py-20" #faqSection>
+  <div class="container max-w-4xl mx-auto px-4">
+    <div class="section-head text-center mb-12">
+      <h2 class="font-title text-3xl md:text-4xl font-bold mb-4">Questions Fréquentes</h2>
+      <p class="text-gray-600">Tout ce que vous devez savoir sur l'événement Tax & Legal Days 2026.</p>
+    </div>
+
+    <div class="faq-container space-y-3">
+      <div class="faq-item rounded-xl border border-gray-200 bg-white overflow-hidden transition-all duration-300 hover:shadow-sm" *ngFor="let faq of faqs; let i = index" [class.active]="faq.isOpen" [class.border-blue-600]="faq.isOpen" [class.shadow-md]="faq.isOpen">
+        <div class="faq-question flex items-center justify-between p-5 cursor-pointer select-none hover:bg-blue-50/50 transition-colors duration-200" (click)="toggleFaq(i)">
+          <h3 class="font-semibold text-gray-900 pr-4 leading-snug">{{ faq.question }}</h3>
+          <div class="faq-icon w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0 transition-all duration-300" [class.bg-blue-700]="faq.isOpen" [class.rotate-180]="faq.isOpen">
+            <mat-icon class="text-blue-700 text-xl" [class.text-white]="faq.isOpen">{{ faq.isOpen ? 'remove' : 'add' }}</mat-icon>
+          </div>
+        </div>
+        <div class="faq-answer overflow-hidden transition-all duration-300" [class.open]="faq.isOpen">
+          <div class="faq-answer-content px-5 pb-5">
+            <p class="text-gray-600 leading-relaxed">{{ faq.answer }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft scroll-reveal py-16 md:py-20 bg-gray-50" #contactSection>
+  <div class="container max-w-4xl mx-auto px-4">
+    <div class="contact-quick card bg-white rounded-xl p-8 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border border-gray-100">
+      <div>
+        <h3 class="font-title text-xl font-bold mb-2 text-gray-900">Contact rapide</h3>
+        <p class="text-gray-600">
+          Pour sponsoring, participation, ou informations pratiques :
+        </p>
+      </div>
+
+      <div class="contact-actions flex flex-wrap gap-3">
+        <a class="btn-primary inline-flex items-center gap-2 px-5 py-3 rounded-lg font-semibold transition-all duration-200 hover:scale-105 hover:shadow-lg" [href]="'mailto:' + contactEmail">
+          <mat-icon class="text-lg">mail</mat-icon>
+          <span class="text-sm">{{ contactEmail }}</span>
+        </a>
+        <a class="btn-outline inline-flex items-center gap-2 px-5 py-3 rounded-lg font-semibold border border-gray-200 bg-white hover:bg-blue-50 transition-all duration-200" [href]="'tel:' + contactPhone.replaceAll(' ', '')">
+          <mat-icon class="text-lg">call</mat-icon>
+          <span class="text-sm">{{ contactPhone }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

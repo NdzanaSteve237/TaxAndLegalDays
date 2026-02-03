@@ -1,0 +1,191 @@
+<!-- src/app/pages/comite/comite.component.html -->
+<section class="hero">
+  <!-- Vidéo en arrière-plan -->
+  <video class="hero-video" autoplay muted loop playsinline defaultMuted>
+    <source src="assets/images/video_team_tax_and_legal_days.mp4" type="video/mp4">
+  </video>
+  
+  <!-- Overlay pour assurer la lisibilité -->
+  <div class="hero-overlay"></div>
+  
+  <!-- Contenu principal -->
+  <div class="hero-content">
+    <div class="hero-badge">
+      <mat-icon>groups</mat-icon>
+      <span>Notre Équipe</span>
+    </div>
+    <h1>Comité d'organisation</h1>
+    <p class="hero-description">
+      Une équipe structurée pour porter l'édition 2026.<br />
+    </p>
+  </div>
+</section>
+
+<section class="team-section">
+  <div class="team-container">
+    <div class="section-header">
+      <h2 class="section-title">Rencontrer l'équipe</h2>
+    </div>
+
+    <div class="team-grid team-grid--top">
+      <article
+        #revealCard
+        class="team-member reveal"
+        *ngFor="let member of topMembers(); trackBy: trackByMember"
+      >
+        <div class="member-card">
+          <div class="member-avatar">
+            <img
+              [src]="member.photo"
+              [alt]="member.name"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="member-info">
+            <h3 class="member-name">{{ member.name }}</h3>
+            <p class="member-role" [class]="'role-' + member.roleClass">
+              {{ member.role }}
+            </p>
+          </div>
+
+          <div class="member-socials">
+            <a
+              *ngFor="let social of member.socials"
+              [href]="social.url"
+              [attr.aria-label]="social.platform + ' de ' + member.name"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link"
+              [ngClass]="'is-' + social.platform"
+            >
+              <mat-icon>{{ getSocialIcon(social.platform) }}</mat-icon>
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="team-scroll" aria-label="Autres membres à faire défiler">
+      <div class="team-scroll-track">
+        <article
+          #revealCard
+          class="team-member reveal"
+          *ngFor="let member of scrollMembers(); trackBy: trackByMember"
+        >
+          <div class="member-card">
+            <div class="member-avatar">
+              <img
+                [src]="member.photo"
+                [alt]="member.name"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="member-info">
+              <h3 class="member-name">{{ member.name }}</h3>
+              <p class="member-role" [class]="'role-' + member.roleClass">
+                {{ member.role }}
+              </p>
+            </div>
+
+            <div class="member-socials">
+              <a
+                *ngFor="let social of member.socials"
+                [href]="social.url"
+                [attr.aria-label]="social.platform + ' de ' + member.name"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+                [ngClass]="'is-' + social.platform"
+              >
+                <mat-icon>{{ getSocialIcon(social.platform) }}</mat-icon>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article
+          #revealCard
+          class="team-member reveal"
+          *ngFor="let member of scrollMembers(); trackBy: trackByMember"
+          aria-hidden="true"
+        >
+          <div class="member-card">
+            <div class="member-avatar">
+              <img
+                [src]="member.photo"
+                [alt]="member.name"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="member-info">
+              <h3 class="member-name">{{ member.name }}</h3>
+              <p class="member-role" [class]="'role-' + member.roleClass">
+                {{ member.role }}
+              </p>
+            </div>
+
+            <div class="member-socials">
+              <a
+                *ngFor="let social of member.socials"
+                [href]="social.url"
+                [attr.aria-label]="social.platform + ' de ' + member.name"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+                [ngClass]="'is-' + social.platform"
+              >
+                <mat-icon>{{ getSocialIcon(social.platform) }}</mat-icon>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="section-head">
+      <h2>Responsables de cellules</h2>
+      <p>Les équipes terrain: communication, scientifique, clinique juridique, logistique, protocole…</p>
+    </div>
+
+    <nav class="horizontal-scroll-nav">
+      <article
+        #revealCard
+        class="member card glass reveal"
+        *ngFor="let p of cellules(); trackBy: trackByPerson; let i = index"
+        [style.--i]="i"
+        [style.--max-p]="cellules().length"
+      >
+        <div class="hover-zone">
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
+        
+        <div class="member-content">
+          <div class="avatar gold">
+            <mat-icon>{{ roleIcon(p.role) }}</mat-icon>
+          </div>
+
+          <div class="meta">
+            <div class="role">{{ p.role }}</div>
+            <div class="name">{{ p.name }}</div>
+          </div>
+
+          <div class="badge gold">
+            <mat-icon>task_alt</mat-icon>
+            <span>Opérations</span>
+          </div>
+        </div>
+      </article>
+    </nav>
+  </div>
+</section>

@@ -1,0 +1,127 @@
+<!-- src/app/pages/sponsoring/sponsoring.component.html -->
+<section class="hero scroll-reveal" #heroSection>
+  <div class="glow" [ngStyle]="glowStyle()"></div>
+
+  <div class="container hero-grid">
+    <div class="hero-left">
+      <div class="chip">
+        <span class="dot"></span>
+        <span>Sponsoring • Tax & Legal Days 2026</span>
+      </div>
+
+      <h1>Devenez sponsor. Marquez l’édition.</h1>
+      <p class="subtitle">
+        Associez votre marque à un évènement académique majeur (UCAC) autour de la
+        <strong>Fiscalité</strong> et des <strong>Prix de transfert</strong>.
+        Choisissez un package, obtenez une visibilité claire, et gagnez en notoriété.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn-primary" [href]="'mailto:' + email">
+          <mat-icon>mail</mat-icon>
+          Demander le dossier
+        </a>
+        <a class="btn-outline" href="tel:+237650093861">
+          <mat-icon>call</mat-icon>
+          Appeler
+        </a>
+      </div>
+
+      <div class="advantages">
+        <div class="adv card scroll-reveal-item" *ngFor="let a of advantages; let i = index" #advItem>
+          <div class="adv-icon">
+            <mat-icon>{{ a.icon }}</mat-icon>
+          </div>
+          <div>
+            <div class="adv-title">{{ a.title }}</div>
+            <div class="adv-desc">{{ a.desc }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right card glass scroll-reveal-item" #contactCard>
+      <h3>Contact rapide</h3>
+      <div class="contact">
+        <div class="row">
+          <mat-icon>mail</mat-icon>
+          <a [href]="'mailto:' + email">{{ email }}</a>
+        </div>
+        <div class="row">
+          <mat-icon>call</mat-icon>
+          <a href="tel:+237650093861">{{ phone }}</a>
+          <span class="muted">• ONANA NGA Théo-Loïc</span>
+        </div>
+      </div>
+
+      <div class="note">
+        <mat-icon>info</mat-icon>
+        <span>Les offres peuvent être adaptées selon vos objectifs de visibilité.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="packs scroll-reveal" #packsSection>
+  <div class="container">
+    <div class="section-head scroll-reveal-item" #sectionHead>
+      <h2>Packages Sponsoring</h2>
+      <p>Choisissez votre niveau de visibilité. Clair, mesurable, et valorisant.</p>
+    </div>
+
+    <div class="pack-grid">
+      <article class="pack card scroll-reveal-item" *ngFor="let p of packs; let i = index" [class.featured]="p.highlight" #packItem>
+        <div class="pack-top">
+          <div class="pack-name">{{ p.name }}</div>
+          <div class="pack-price">{{ p.price }}</div>
+          <div class="pack-tagline">{{ p.tagline }}</div>
+        </div>
+
+        <div class="pack-body">
+          <div class="perk" *ngFor="let perk of p.perks">
+            <mat-icon class="perk-icon" [class.ok]="perk.ok" [class.no]="!perk.ok">
+              {{ perk.ok ? 'check_circle' : 'cancel' }}
+            </mat-icon>
+            <span>{{ perk.label }}</span>
+          </div>
+        </div>
+
+        <div class="pack-actions">
+          <a class="btn-accent" [href]="'mailto:' + email + '?subject=' + ('Sponsoring ' + p.name) ">
+            <mat-icon>send</mat-icon>
+            Je choisis {{ p.name }}
+          </a>
+          <a class="btn-outline" routerLink="/contact">
+            <mat-icon>help</mat-icon>
+            Poser une question
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="cta scroll-reveal" #ctaSection>
+  <div class="container">
+    <div class="cta-box scroll-reveal-item" #ctaBox>
+      <div>
+        <h2>Votre marque, au cœur de la communauté UCAC.</h2>
+        <p>
+          Affiches, réseaux, supports officiels, présence campus, visibilité événementielle.
+          Nous vous aidons à choisir le package qui maximise votre impact.
+        </p>
+      </div>
+
+      <div class="cta-actions">
+        <a class="btn-primary" [href]="'mailto:' + email">
+          <mat-icon>mail</mat-icon>
+          Écrire maintenant
+        </a>
+        <a class="btn-outline" routerLink="/programme">
+          <mat-icon>event</mat-icon>
+          Voir le programme
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

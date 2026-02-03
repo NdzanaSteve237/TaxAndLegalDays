@@ -1,0 +1,57 @@
+<header class="site-header">
+  <div class="header-inner">
+    <!-- Brand -->
+    <a class="brand" routerLink="/" (click)="closeMobileMenu()">
+      <img class="brand-logo" src="assets/images/TaxLogo.jpeg" alt="Tax & Legal Days" />
+      <div class="brand-text">
+        <div class="brand-title">Tax & Legal Days</div>
+        <div class="brand-subtitle">UCAC • Ekounou • 2026</div>
+      </div>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="nav-desktop" aria-label="Navigation principale">
+      <a
+        *ngFor="let item of navItems"
+        class="nav-link"
+        [routerLink]="item.path"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+      >
+        {{ item.label }}
+      </a>
+    </nav>
+
+    <!-- Actions -->
+    <div class="header-actions">
+      <a class="btn-outline desktop-only" routerLink="/programme">Voir le programme</a>
+      <a class="btn-accent desktop-only" routerLink="/sponsoring">Devenir Sponsor</a>
+
+      <!-- Mobile toggle -->
+      <button class="icon-btn mobile-only" type="button" (click)="toggleMobileMenu()" aria-label="Menu">
+        <mat-icon>{{ isMobileMenuOpen ? 'close' : 'menu' }}</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" *ngIf="isMobileMenuOpen">
+    <div class="mobile-menu-inner">
+      <a
+        *ngFor="let item of navItems"
+        class="mobile-nav-link"
+        [routerLink]="item.path"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+        (click)="closeMobileMenu()"
+      >
+        {{ item.label }}
+      </a>
+
+      <div class="mobile-cta">
+        <a class="btn-outline w-100" routerLink="/programme" (click)="closeMobileMenu()">Voir le programme</a>
+        <a class="btn-accent w-100" routerLink="/sponsoring" (click)="closeMobileMenu()">Devenir Sponsor</a>
+      </div>
+    </div>
+  </div>
+</header>

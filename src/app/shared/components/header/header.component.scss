@@ -1,0 +1,333 @@
+/* main-layout.component.scss */
+
+/* ========== TAX & LEGAL DAYS - DESIGN TOKENS ========== */
+/* Brand */
+$brand-blue-700: #0B3D91;   // Bleu principal (header, CTA)
+$brand-blue-600: #1557C0;   // Hover / liens
+$brand-blue-100: #E8F0FF;   // Fond léger sections
+
+$brand-gold-600: #D6A600;   // Or principal (accents, highlights)
+$brand-gold-500: #E3B21A;   // Hover accent
+$brand-gold-100: #FFF4CC;   // Fond badge or
+
+/* Neutrals */
+$bg-page: #F7F9FC;          // Fond global
+$bg-card: #FFFFFF;          // Cartes
+$border: #E3E8F2;           // Bordures légères
+
+$text-900: #0F172A;         // Titres
+$text-700: #334155;         // Texte standard
+$text-500: #64748B;         // Texte secondaire
+$text-inverse: #FFFFFF;     // Texte sur fond sombre
+
+/* States */
+$success: #16A34A;
+$warning: #F59E0B;
+$danger: #DC2626;
+
+/* Shadows & radius */
+$radius-sm: 10px;
+$radius-md: 14px;
+$radius-lg: 18px;
+
+$shadow-sm: 0 6px 18px rgba(15, 23, 42, 0.08);
+$shadow-md: 0 12px 28px rgba(15, 23, 42, 0.12);
+
+$font-title: 'Merriweather', serif;
+$font-body: 'Inter', system-ui, -apple-system, "Segoe UI", sans-serif;
+
+h1, h2, h3 {
+  font-family: $font-title;
+  color: $text-900;
+}
+
+body, p, button, input {
+  font-family: $font-body;
+  color: $text-700;
+}
+
+/* Buttons (your base styles) */
+.btn-primary {
+  background: $brand-blue-700;
+  color: $text-inverse;
+  border: none;
+  border-radius: $radius-sm;
+  padding: 12px 18px;
+  font-weight: 600;
+  box-shadow: $shadow-sm;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover { background: $brand-blue-600; }
+}
+
+.btn-accent {
+  background: $brand-gold-600;
+  color: $text-900;
+  border: none;
+  border-radius: $radius-sm;
+  padding: 12px 18px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover { background: $brand-gold-500; }
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid $border;
+  color: $text-700;
+  border-radius: $radius-sm;
+  padding: 12px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover { background: $brand-blue-100; }
+}
+
+.card {
+  background: $bg-card;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  box-shadow: $shadow-sm;
+  padding: 18px;
+}
+
+/* ========== Layout styles ========== */
+:host {
+  display: block;
+  //min-height: 100vh;
+  background: $bg-page;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: $bg-card;
+  border-bottom: 1px solid $border;
+}
+
+.header-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  min-width: 240px;
+}
+
+.brand-logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-title {
+  font-family: $font-title;
+  font-weight: 700;
+  color: $text-900;
+  font-size: 16px;
+}
+
+.brand-subtitle {
+  font-size: 12px;
+  color: $text-500;
+  margin-top: 3px;
+}
+
+.nav-desktop {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-link {
+  color: $text-700;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 10px;
+  border-radius: 10px;
+  transition: background 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background: $brand-blue-100;
+    color: $brand-blue-700;
+  }
+
+  &.active {
+    color: $brand-blue-700;
+    background: $brand-blue-100;
+  }
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid $border;
+  background: $bg-card;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: $brand-blue-100;
+  }
+
+  mat-icon {
+    color: $brand-blue-700;
+  }
+}
+
+/* Mobile menu */
+.mobile-menu {
+  border-top: 1px solid $border;
+  background: $bg-card;
+}
+
+.mobile-menu-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 12px 18px 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.mobile-nav-link {
+  text-decoration: none;
+  font-weight: 700;
+  color: $text-700;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid $border;
+  background: $bg-card;
+
+  &:hover {
+    background: $brand-blue-100;
+    color: $brand-blue-700;
+  }
+
+  &.active {
+    background: $brand-blue-100;
+    color: $brand-blue-700;
+    border-color: rgba(21, 87, 192, 0.25);
+  }
+}
+
+.mobile-cta {
+  display: grid;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.w-100 { width: 100%; }
+
+/* Main content */
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 22px 18px 40px;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid $border;
+  background: $bg-card;
+}
+
+.footer-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.footer-title {
+  font-family: $font-title;
+  font-weight: 700;
+  color: $text-900;
+}
+
+.footer-subtitle {
+  color: $text-500;
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: $text-500;
+}
+
+.footer-link {
+  color: $brand-blue-700;
+  text-decoration: none;
+  font-weight: 600;
+
+  &:hover { color: $brand-blue-600; }
+}
+
+.dot { color: $text-500; }
+
+/* Responsive */
+.desktop-only { display: inline-flex; }
+.mobile-only { display: none; }
+
+@media (max-width: 920px) {
+  .nav-desktop { display: none; }
+  .desktop-only { display: none; }
+  .mobile-only { display: inline-flex; }
+  .brand { min-width: unset; }
+}
+
+@media (max-width: 520px) {
+  .brand-logo { width: 38px; height: 38px; }
+  .brand-title { font-size: 15px; }
+}
+@media (max-width: 400px) {
+  .header-inner { padding: 14px 12px; }
+  .page { padding: 22px 12px 40px; }
+  .footer-inner { padding: 18px 12px; }
+}

@@ -1,0 +1,157 @@
+<!-- src/app/pages/program/program.component.html -->
+<section class="program-hero">
+  <div class="parallax-grid" [ngStyle]="gridStyle()"></div>
+
+  <div class="orbs">
+    <div class="orb orb-1" [ngStyle]="orbStyle()"></div>
+    <div class="orb orb-2" [ngStyle]="orbStyle()"></div>
+    <div class="orb orb-3" [ngStyle]="orbStyle()"></div>
+  </div>
+
+  <div class="container hero-inner">
+    <div class="hero-copy" [ngStyle]="headerParallaxStyle()">
+      <div class="chip">
+        <span class="chip-dot"></span>
+        <span>Programme officiel • Tax & Legal Days 2026</span>
+      </div>
+
+      <h1>Fiscalité & Prix de Transfert</h1>
+      <p class="subtitle">
+        3 jours d’ateliers, de débats, d’immersion professionnelle et d’activités ouvertes au public.
+        Navigue par journée, découvre les temps forts, et prépare ta participation.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn-outline" routerLink="/sponsoring">
+          <mat-icon>workspace_premium</mat-icon>
+          Sponsoring
+        </a>
+        <a class="btn-primary" routerLink="/contact">
+          <mat-icon>mail</mat-icon>
+          Contact
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-panel glass">
+      <div class="panel-top">
+        <div class="panel-title">
+          <mat-icon>event</mat-icon>
+          <span>02–05 Mars 2026</span>
+        </div>
+        <div class="panel-sub">UCAC — Campus d’Ekounou</div>
+      </div>
+
+      <div class="panel-stats">
+        <div class="stat">
+          <div class="stat-value">03</div>
+          <div class="stat-label">Jours</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">10+</div>
+          <div class="stat-label">Activités</div>
+        </div>
+        <!-- <div class="stat">
+          <div class="stat-value">OHADA</div>
+          <div class="stat-label">Cadre</div>
+        </div> -->
+      </div>
+
+      <div class="panel-note">
+        <mat-icon>info</mat-icon>
+        <span>Le programme détaillé peut évoluer selon les intervenants et partenaires.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="program-body">
+  <div class="container">
+    <div class="tabs glass">
+      <button
+        class="tab"
+        [class.active]="activeDayKey() === 'J1'"
+        (click)="setDay('J1')"
+        type="button"
+      >
+        <span class="tab-kicker">Jour 1</span>
+        <span class="tab-date">03 Mars</span>
+      </button>
+
+      <button
+        class="tab"
+        [class.active]="activeDayKey() === 'J2'"
+        (click)="setDay('J2')"
+        type="button"
+      >
+        <span class="tab-kicker">Jour 2</span>
+        <span class="tab-date">04 Mars</span>
+      </button>
+
+      <button
+        class="tab"
+        [class.active]="activeDayKey() === 'J3'"
+        (click)="setDay('J3')"
+        type="button"
+      >
+        <span class="tab-kicker">Jour 3</span>
+        <span class="tab-date">05 Mars</span>
+      </button>
+    </div>
+
+    <div class="day-header">
+      <div>
+        <h2>{{ activeDay().label }} • {{ activeDay().date }}</h2>
+        <p class="day-sub">{{ activeDay().theme }}</p>
+      </div>
+
+      <div class="day-badges">
+        <span class="mini-badge blue">
+          <mat-icon>gavel</mat-icon>
+          Fiscalité
+        </span>
+        <span class="mini-badge gold">
+          <mat-icon>balance</mat-icon>
+          Droit des affaires
+        </span>
+        <span class="mini-badge soft">
+          <mat-icon>hub</mat-icon>
+          Réseautage
+        </span>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <article class="event glass" *ngFor="let item of activeDay().items">
+        <div class="event-left">
+          <div class="event-icon">
+            <mat-icon>{{ item.icon }}</mat-icon>
+          </div>
+
+          <div class="event-time" *ngIf="item.time">{{ item.time }}</div>
+          <div class="event-line" aria-hidden="true"></div>
+        </div>
+
+        <div class="event-right">
+          <div class="event-top">
+            <span [class]="tagClass(item.tag)">{{ item.tag }}</span>
+          </div>
+
+          <h3 class="event-title">{{ item.title }}</h3>
+          <p class="event-desc">{{ item.desc }}</p>
+
+          <div class="event-actions">
+            <a class="btn-outline small" routerLink="/contact">
+              <mat-icon>send</mat-icon>
+              Participer / S’informer
+            </a>
+            <a class="btn-primary small" routerLink="/sponsoring">
+              <mat-icon>workspace_premium</mat-icon>
+              Sponsoriser
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,148 @@
+<!-- src/app/pages/contact/contact.component.html -->
+<section class="hero scroll-reveal" #heroSection>
+  <div class="hero-background"></div>
+  <div class="glow" [ngStyle]="glowStyle()"></div>
+
+  <div class="container hero-grid">
+    <div class="hero-left scroll-reveal-item" #heroLeft>
+      <div class="chip">
+        <span class="dot"></span>
+        <span>Contact • Tax & Legal Days 2026</span>
+      </div>
+
+      <h1>Parlons. On répond vite. ✅</h1>
+      <p class="subtitle">
+        Sponsoring, participation, intervenants, partenariats, programme…
+        Envoie un message et on te répond avec les infos les plus utiles.
+      </p>
+
+      <div class="cards">
+        <article class="mini card glass scroll-reveal-item" #contactCard>
+          <div class="ico">
+            <mat-icon>mail</mat-icon>
+          </div>
+          <div>
+            <div class="label">Email</div>
+            <a class="value" [href]="'mailto:' + email">{{ email }}</a>
+          </div>
+        </article>
+
+        <article class="mini card glass scroll-reveal-item" #contactCard>
+          <div class="ico gold">
+            <mat-icon>call</mat-icon>
+          </div>
+          <div>
+            <div class="label">Téléphone</div>
+            <a class="value" [href]="'tel:' + phoneTel">{{ phoneDisplay }}</a>
+          </div>
+        </article>
+
+        <article class="mini card glass scroll-reveal-item" #contactCard>
+          <div class="ico soft">
+            <mat-icon>location_on</mat-icon>
+          </div>
+          <div>
+            <div class="label">Lieu</div>
+            <div class="value plain">{{ location }}</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="quick-actions">
+        <button class="btn-accent" type="button" (click)="openWhatsApp()">
+          <mat-icon>chat</mat-icon>
+          WhatsApp
+        </button>
+
+        <a class="btn-outline" routerLink="/sponsoring">
+          <mat-icon>workspace_premium</mat-icon>
+          Voir Sponsoring
+        </a>
+
+        <a class="btn-outline" routerLink="/programme">
+          <mat-icon>event</mat-icon>
+          Voir Programme
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-right card glass scroll-reveal-item" #heroRight>
+      <div class="form-head">
+        <h3>Envoyer un message</h3>
+        <p>Réponse rapide. Ton message est prêt à partir par email.</p>
+      </div>
+
+      <form (ngSubmit)="submit()" [formGroup]="form" novalidate>
+        <div class="grid">
+          <div class="field">
+            <label>Nom complet *</label>
+            <input type="text" formControlName="fullName" placeholder="Ex: ONANA Théophile" />
+            <small class="err" *ngIf="f.fullName.touched && f.fullName.invalid">
+              Entrez un nom (min. 3 caractères).
+            </small>
+          </div>
+
+          <div class="field">
+            <label>Organisation</label>
+            <input type="text" formControlName="organization" placeholder="Ex: Cabinet / Entreprise / Institution" />
+          </div>
+
+          <div class="field">
+            <label>Email *</label>
+            <input type="email" formControlName="email" placeholder="ex: nom@domaine.com" />
+            <small class="err" *ngIf="f.email.touched && f.email.invalid">
+              Entrez un email valide.
+            </small>
+          </div>
+
+          <div class="field">
+            <label>Téléphone</label>
+            <input type="tel" formControlName="phone" placeholder="+237..." />
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Objet *</label>
+          <input type="text" formControlName="subject" placeholder="Ex: Demande de sponsoring Gold" />
+          <small class="err" *ngIf="f.subject.touched && f.subject.invalid">
+            Entrez un objet (min. 4 caractères).
+          </small>
+        </div>
+
+        <div class="field">
+          <label>Message *</label>
+          <textarea formControlName="message" rows="6" placeholder="Explique ta demande en quelques lignes…"></textarea>
+          <small class="err" *ngIf="f.message.touched && f.message.invalid">
+            Message trop court (min. 15 caractères).
+          </small>
+        </div>
+
+        <label class="consent">
+          <input type="checkbox" formControlName="consent" />
+          <span>J’accepte que mes informations soient utilisées uniquement pour répondre à ma demande.</span>
+        </label>
+
+        <small class="err" *ngIf="f.consent.touched && f.consent.invalid">
+          Le consentement est requis.
+        </small>
+
+        <div class="actions">
+          <button class="btn-primary" type="submit" [disabled]="sending()">
+            <mat-icon>{{ sending() ? 'hourglass_top' : 'send' }}</mat-icon>
+            {{ sending() ? 'Préparation…' : 'Envoyer' }}
+          </button>
+
+          <a class="btn-outline" [href]="buildMailto()" (click)="$event.stopPropagation()">
+            <mat-icon>alternate_email</mat-icon>
+            Ouvrir l’email
+          </a>
+        </div>
+
+        <div class="success" *ngIf="sent()">
+          <mat-icon>check_circle</mat-icon>
+          <span>Prêt ✅ Ton email va s’ouvrir. Merci !</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

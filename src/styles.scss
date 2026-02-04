@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+@import 'keen-slider/keen-slider.min.css';
+/* ========== TAX & LEGAL DAYS - DESIGN TOKENS ========== */
+
+/* Brand */
+$brand-blue-700: #0B3D91;   // Bleu principal (header, CTA)
+$brand-blue-600: #1557C0;   // Hover / liens
+$brand-blue-100: #E8F0FF;   // Fond léger sections
+
+$brand-gold-600: #D6A600;   // Or principal (accents, highlights)
+$brand-gold-500: #E3B21A;   // Hover accent
+$brand-gold-100: #FFF4CC;   // Fond badge or
+
+/* Neutrals */
+$bg-page: #F7F9FC;          // Fond global
+$bg-card: #FFFFFF;          // Cartes
+$border: #E3E8F2;           // Bordures légères
+
+$text-900: #0F172A;         // Titres
+$text-700: #334155;         // Texte standard
+$text-500: #64748B;         // Texte secondaire
+$text-inverse: #FFFFFF;     // Texte sur fond sombre
+
+/* States */
+$success: #16A34A;
+$warning: #F59E0B;
+$danger: #DC2626;
+
+/* Shadows & radius */
+$radius-sm: 10px;
+$radius-md: 14px;
+$radius-lg: 18px;
+
+$shadow-sm: 0 6px 18px rgba(15, 23, 42, 0.08);
+$shadow-md: 0 12px 28px rgba(15, 23, 42, 0.12);

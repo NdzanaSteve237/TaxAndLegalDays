@@ -18,11 +18,6 @@
     "target": "ES2022",
     "module": "ES2022"
   },
-    "paths": {
-      "tslib": [
-        "node_modules/tslib/tslib.d.ts"
-      ]
-    },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

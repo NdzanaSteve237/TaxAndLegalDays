@@ -11,7 +11,7 @@ import { SidebarComponent } from "./shared/components/sidebar/sidebar.component"
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'ras-website';
+  title = 'taxandlegaldays';
 
   sidebarOpen = false;
 

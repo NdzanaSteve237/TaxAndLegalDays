@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ras-website": {
+    "taxandlegaldays": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -54,8 +54,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "10kB",
+                  "maximumError": "20kB"
                 }
               ],
               "outputHashing": "all"
@@ -78,10 +78,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ras-website:build:production"
+              "buildTarget": "taxandlegaldays:build:production"
             },
             "development": {
-              "buildTarget": "ras-website:build:development"
+              "buildTarget": "taxandlegaldays:build:development"
             }
           },
           "defaultConfiguration": "development"

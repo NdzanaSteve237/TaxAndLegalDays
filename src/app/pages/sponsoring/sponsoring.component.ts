@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, HostListener, QueryList, ViewChildren, computed, signal } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { AfterViewInit, Component, ElementRef, HostListener, QueryList, ViewChildren, computed, signal, Inject, PLATFORM_ID } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -19,6 +19,8 @@ type Pack = {
   styleUrl: './sponsoring.component.scss',
 })
 export class SponsoringComponent implements AfterViewInit {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
   // Parallax / glow
   private mouseX = signal(0.5);
   private mouseY = signal(0.5);
@@ -31,6 +33,7 @@ export class SponsoringComponent implements AfterViewInit {
 
   @HostListener('window:mousemove', ['$event'])
   onMouseMove(e: MouseEvent) {
+    if (!isPlatformBrowser(this.platformId)) return;
     const w = window.innerWidth || 1;
     const h = window.innerHeight || 1;
     this.mouseX.set(e.clientX / w);
@@ -118,6 +121,8 @@ export class SponsoringComponent implements AfterViewInit {
   @ViewChildren('ctaBox', { read: ElementRef }) ctaBox!: QueryList<ElementRef>;
 
   ngAfterViewInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
     // Attendre que la vue soit complètement initialisée
     setTimeout(() => {
       this.initScrollReveal();
@@ -125,6 +130,8 @@ export class SponsoringComponent implements AfterViewInit {
   }
 
   private initScrollReveal(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
     // Vérifier si l'utilisateur préfère les animations réduites
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
@@ -137,6 +144,17 @@ export class SponsoringComponent implements AfterViewInit {
 
     if (prefersReducedMotion) {
       // Si animations réduites, afficher tout immédiatement
+      allSections.forEach(el => el.classList.add('is-visible'));
+      this.sectionHead?.toArray().forEach(el => el.nativeElement.classList.add('is-visible'));
+      this.contactCard?.toArray().forEach(el => el.nativeElement.classList.add('is-visible'));
+      this.advItems?.toArray().forEach(el => el.nativeElement.classList.add('is-visible'));
+      this.packItems?.toArray().forEach(el => el.nativeElement.classList.add('is-visible'));
+      this.ctaBox?.toArray().forEach(el => el.nativeElement.classList.add('is-visible'));
+      return;
+    }
+
+    // Fallback si l'API n'est pas disponible (ou SSR edge-case)
+    if (typeof IntersectionObserver === 'undefined') {
       allSections.forEach(el => el.classList.add('is-visible'));
       this.sectionHead?.toArray().forEach(el => el.nativeElement.classList.add('is-visible'));
       this.contactCard?.toArray().forEach(el => el.nativeElement.classList.add('is-visible'));

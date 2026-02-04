@@ -1,11 +1,13 @@
 // src/app/pages/galerie/galerie.component.ts
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import {
   AfterViewInit,
   Component,
   ElementRef,
   HostListener,
+  Inject,
   OnDestroy,
+  PLATFORM_ID,
   QueryList,
   ViewChildren,
   signal,
@@ -28,6 +30,8 @@ type GalleryItem = {
   styleUrl: './galerie.component.scss',
 })
 export class GalerieComponent implements AfterViewInit, OnDestroy {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
   // Images de démonstration (à remplacer par tes assets réels)
   items: GalleryItem[] = [
     {
@@ -104,12 +108,16 @@ export class GalerieComponent implements AfterViewInit, OnDestroy {
   openAt(index: number) {
     this.selectedIndex.set(index);
     this.isOpen.set(true);
-    document.body.style.overflow = 'hidden';
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.style.overflow = 'hidden';
+    }
   }
 
   close() {
     this.isOpen.set(false);
-    document.body.style.overflow = '';
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.style.overflow = '';
+    }
   }
 
   next() {
@@ -148,12 +156,15 @@ export class GalerieComponent implements AfterViewInit, OnDestroy {
 
   @HostListener('window:scroll')
   onScroll() {
+    if (!isPlatformBrowser(this.platformId)) return;
     if (this.reduceMotion) return;
     this.lastScrollTs = performance.now();
     this.startParallaxLoop();
   }
 
   ngAfterViewInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
     const els = this.revealItems?.toArray().map((r) => r.nativeElement) ?? [];
     if (!('IntersectionObserver' in window) || els.length === 0) {
       els.forEach((el) => el.classList.add('is-visible'));
@@ -203,6 +214,7 @@ export class GalerieComponent implements AfterViewInit, OnDestroy {
   }
 
   private startParallaxLoop(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     if (this.rafId !== null) return;
     const tick = () => {
       this.applyParallaxFrame();
@@ -220,6 +232,7 @@ export class GalerieComponent implements AfterViewInit, OnDestroy {
   }
 
   private applyParallaxFrame(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     if (this.reduceMotion) return;
     if (this.parallaxTargets.length === 0) return;
 
@@ -246,6 +259,7 @@ export class GalerieComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     if (this.rafId !== null) {
       cancelAnimationFrame(this.rafId);
       this.rafId = null;

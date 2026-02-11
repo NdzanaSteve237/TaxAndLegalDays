@@ -107,7 +107,7 @@ export class SponsoringComponent implements AfterViewInit {
     },
   ];
 
-  email = 'taxandlegaldays2026@gmail.com';
+  email = 'contact@taxandlegaldaysucac.com';
   phone = '+237 650 09 38 61';
 
   // Scroll reveal pour les sections

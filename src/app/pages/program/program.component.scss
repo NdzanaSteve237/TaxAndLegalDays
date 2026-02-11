@@ -65,7 +65,7 @@ $font-body: 'Inter', system-ui, -apple-system, "Segoe UI", sans-serif;
 
   &:hover { background: $brand-blue-600; transform: translateY(-1px); box-shadow: $shadow-md; }
 
-  &.small { padding: 10px 14px; font-size: 0.92rem; }
+  &.small { padding: 8px 12px; font-size: 0.88rem; }
 }
 
 .btn-outline {
@@ -77,12 +77,15 @@ $font-body: 'Inter', system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 600;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   text-decoration: none;
   transition: background 180ms ease, transform 180ms ease;
+  max-width: 100%;
+  box-sizing: border-box;
 
   &:hover { background: rgba(232, 240, 255, 0.75); transform: translateY(-1px); }
-  &.small { padding: 10px 14px; font-size: 0.92rem; }
+  &.small { padding: 8px 12px; font-size: 0.88rem; }
 }
 
 /* HERO with parallax background */
@@ -484,4 +487,40 @@ $font-body: 'Inter', system-ui, -apple-system, "Segoe UI", sans-serif;
     gap: 12px;
   }
   .event-line { display: none; }
+}
+
+@media (max-width: 768px) {
+  .program-hero { padding: 46px 0 12px; }
+  .parallax-grid { height: 320px; opacity: 0.4; }
+  .orb-1 { width: 170px; height: 170px; }
+  .orb-2 { width: 210px; height: 210px; }
+  .orb-3 { width: 140px; height: 140px; }
+  .hero-copy h1 { font-size: clamp(1.7rem, 6vw, 2.2rem); }
+  .subtitle { font-size: 0.98rem; }
+
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-outline { width: 100%; justify-content: center; }
+
+  .hero-panel { padding: 16px; }
+  .panel-stats { grid-template-columns: repeat(2, 1fr); }
+
+  .event-actions { flex-direction: column; align-items: stretch; }
+  .event-actions .btn-primary,
+  .event-actions .btn-outline { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 600px) {
+  .container { width: min(1120px, calc(100% - 24px)); }
+  .chip { font-size: 0.88rem; }
+  .tabs { padding: 4px; }
+  .tab { padding: 10px; }
+  .tab .tab-date { font-size: 0.84rem; }
+
+  .day-header { gap: 8px; }
+  .mini-badge { font-size: 0.82rem; padding: 6px 10px; }
+
+  .panel-stats { grid-template-columns: 1fr; }
+  .event { padding: 14px; }
+  .event-title { font-size: 1.05rem; }
 }

@@ -32,7 +32,7 @@ export class MainLayoutComponent {
     {
       icon: 'school',
       title: 'Apprentissage',
-      desc: 'Loi de finances 2026, fiscalité locale, prix de transfert et pratiques terrain avec des experts.',
+      desc: 'Loi de finances 2026, fiscalité locale, prix de transfert et pratique terrain avec des experts.',
     },
     {
       icon: 'groups',
@@ -84,6 +84,6 @@ export class MainLayoutComponent {
     'FEICOM',
   ];
 
-  contactEmail = 'taxandlegaldays2026@gmail.com';
+  contactEmail = 'contact@taxandlegaldaysucac.com';
   contactPhone = '+237 650 09 38 61';
 }

@@ -92,13 +92,15 @@ export class HomeComponent implements AfterViewInit {
     { name: 'Chazai Wamba', logo: 'assets/images/partner/Chazai_Wamba.jpg' },
     { name: 'AKOA MBALLA & Co', logo: 'assets/images/partner/AKOA_MBALLA_&_Co.png' },
     { name: 'JURITAX conseil', logo: 'assets/images/partner/JURITAX_conseil.png' },
-    { name: 'Yaoundé Toastmasters club', logo: 'assets/images/partner/Yaoundé_Toastmasters_club.png' },
+    { name: 'Yaoundé Toastmasters club', logo: 'assets/images/partner/Toastmasters_club.png' },
     { name: 'L\'oeil du reporter', logo: 'assets/images/partner/L_oeil_du_reporter.png' },
     { name: 'Innov communication', logo: null },
-    { name: 'H3 télévision', logo: null }
+    { name: 'H3 télévision', logo: 'assets/images/partner/H3.jpeg' },
+    { name: 'Crtv', logo: 'assets/images/partner/crtv.jpg' }
+
   ];
 
-  contactEmail = 'taxandlegaldays2026@gmail.com';
+  contactEmail = 'contact@taxandlegaldaysucac.com';
   contactPhone = '+237 650 09 38 61';
 
   faqs: Faq[] = [
@@ -119,7 +121,7 @@ export class HomeComponent implements AfterViewInit {
     },
     {
       question: 'Comment devenir sponsor ou partenaire ?',
-      answer: 'Nous proposons trois formules : Silver, Gold et Diamond, offrant différents niveaux de visibilité (campus UCAC, réseaux sociaux, supports imprimés, stands à la foire). Contactez-nous à taxandlegaldays2026@gmail.com ou consultez notre page Sponsoring pour obtenir le dossier complet.',
+      answer: 'Nous proposons trois formules : Silver, Gold et Diamond, offrant différents niveaux de visibilité (campus UCAC, réseaux sociaux, supports imprimés, stands à la foire). Contactez-nous à contact@taxandlegaldaysucac.com ou consultez notre page Sponsoring pour obtenir le dossier complet.',
       isOpen: false
     },
     {

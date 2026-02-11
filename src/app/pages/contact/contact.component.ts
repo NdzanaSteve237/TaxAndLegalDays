@@ -35,8 +35,22 @@ export class ContactComponent implements AfterViewInit {
     return { backgroundPosition: `${x}% ${y}%` };
   });
 
+  heroParallaxStyle = computed(() => {
+    const x = (this.mouseX() - 0.5) * 2;
+    const y = (this.mouseY() - 0.5) * 2;
+    const tx = x * 12;
+    const ty = y * 10;
+    const bgX = 50 + x * 6;
+    const bgY = 50 + y * 6;
+    return {
+      transform: `translate3d(${tx}px, ${ty}px, 0) scale(1.02)`,
+      backgroundPosition: `${bgX}% ${bgY}%`,
+    };
+  });
+
   @HostListener('window:mousemove', ['$event'])
   onMouseMove(e: MouseEvent) {
+    if (typeof window === 'undefined') return;
     const w = window.innerWidth || 1;
     const h = window.innerHeight || 1;
     this.mouseX.set(e.clientX / w);
@@ -45,7 +59,7 @@ export class ContactComponent implements AfterViewInit {
 
   
   // Static contact info (adapter si besoin)
-  email = 'taxandlegaldays2026@gmail.com';
+  email = 'contact@taxandlegaldaysucac.com';
   phoneDisplay = '+237 650 09 38 61';
   phoneTel = '+237650093861';
   location = 'UCAC — Campus d’Ekounou, Yaoundé';
